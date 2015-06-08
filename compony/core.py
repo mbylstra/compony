@@ -108,12 +108,16 @@ class Component(object):
     required_attrs = ()
     region_names = ()
 
-    def __init__(self, *args, swaps=None, **regions):
+    def __init__(self, *args, swaps=None, xrays=None, **regions):
 
         if self.default_attrs is None:
             self.default_attrs = {}
 
-        self.xrays = self.get_component_xrays()
+        if xrays:
+            self.xrays = xrays
+        else:
+            self.xrays = {}
+        self.xrays.update(self.get_component_xrays())
         if not swaps:
             swaps = {}
         self.xrays.update({'swaps': swaps})

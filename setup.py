@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup(
     name='compony',
     packages=find_packages(),
-    version='0.0.4',
+    version='0.0.5',
     description='Python view component framework. Pure Python. No templates.',
     author='Michael Bylstra',
     author_email='mbylstra@gmail.com',

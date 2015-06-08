@@ -209,6 +209,23 @@ class TestComponentClass(TestComponentMixin, unittest.TestCase):
             )
         )
 
+    def test_xrays_component_kwargs(self):
+
+        class ChildComponent(Component):
+
+            def render(self):
+                return h1(self.xrays['message'])
+
+        class ParentComponent(Component):
+
+            def render(self):
+                return ChildComponent()
+
+        self.assertComponentEqualToETree(
+            div(ParentComponent(xrays={'message': 'hello from outside'})),
+            div(h1('hello from outside'))
+        )
+
 
     def test_swaps(self):
 
